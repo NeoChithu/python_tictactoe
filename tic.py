@@ -139,13 +139,6 @@ def user_play(letter, first_move):
 		# 		print('The Game has been Draw')
 		# 		sys.exit()
 
-def empty_values (new_list):
-	#print('New List for Data')
-	myItem  = ' '
-	print('-------------------------------------------------')
-	if myItem not in new_list:
-		print('-------------------------------------------------')
-		checkdata(new_list)
 
 def checkdata(new_list, letter):
 	# print('in check data')
