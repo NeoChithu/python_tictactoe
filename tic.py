@@ -1,8 +1,6 @@
 import random
 import sys
 
-
-
 sore_o = 0 
 sore_x = 0
 computer_score = 0
@@ -10,9 +8,6 @@ user_score = 0
 def drawBoard(board):
 
 	# This function prints out the board that it was passed.
-
-
-
 	# "board" is a list of 10 strings representing the board (ignore index 0)
 
 	print('   |   |')
@@ -38,8 +33,8 @@ def drawBoard(board):
 	print('   |   |')
 
 def startgame():
+
 	print('Do you want to be X or O?')
-	
 	#should change to while loop
 	a  = 'False'
 	while a  == 'False':
@@ -51,9 +46,11 @@ def startgame():
 			print('Please enter a valid letter X or O')
 			a = 'False'
 	drawBoard([' ', '1', '2', '3', '4', '5', '6', '7', '8', '9'])
+
 	return initialplay(letter)
 
 def initialplay(letter):
+
 	print('Do you want to make your first move Y or N')
 	a  = 'False'
 	while a  == 'False':
@@ -67,9 +64,11 @@ def initialplay(letter):
 		else:
 			print('Please enter a valid first move Y or N')
 			a = 'False'
+
 	return user_play(letter,first_move)
 
 def user_play(letter, first_move):
+
 	print(letter, first_move)
 	if letter == 'X':
 		manual_letter = 'O'
@@ -87,23 +86,15 @@ def user_play(letter, first_move):
 		manual_input = random.randint(1,9)
 		new_list[int(manual_input)] = letter
 		drawBoard(new_list)
-		#new_list = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
-
-	#new_list = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 	a  = 'False'
 
 	while a  == 'False':
-
-		#print('please enter a value between 1 to 9')
-		
-		#empty_values (new_list)
 
 		b = 'False'
 		while b == 'False':
 			
 			board_value = raw_input('please enter a value between 1 to 9\n')
-			
 
 			try:
 				if new_list [int(board_value)] == ' ':
@@ -117,9 +108,8 @@ def user_play(letter, first_move):
 			except IndexError:
 				b = 'False'
 				print('The value you have entered is invalid, please enter a value between 1 to 9')	
-		#drawBoard(new_list)
+		
 		checkdata(new_list, letter)
-		#empty_values (new_list)
 		b = 'False'
 
 		while b == 'False':
@@ -132,17 +122,9 @@ def user_play(letter, first_move):
 
 		checkdata(new_list, letter)
 		drawBoard(new_list)
-		#empty_values (new_list)
-
-		# for i in range(1,10):
-		# 	if new_list[i] != ' ':
-		# 		print('The Game has been Draw')
-		# 		sys.exit()
-
 
 def checkdata(new_list, letter):
-	# print('in check data')
-	# print(new_list)
+
 	check_value = ''
 	if new_list [1] == new_list [2] == new_list [3] :
 
@@ -152,7 +134,6 @@ def checkdata(new_list, letter):
 			drawBoard(new_list)
 			winner = new_list[1]
 			check_value = 'True'  
-			#sys.exit()
 		
 	elif new_list [4] == new_list [5] == new_list [6] :
 
@@ -162,7 +143,6 @@ def checkdata(new_list, letter):
 			drawBoard(new_list)
 			winner = new_list[5]
 			check_value = 'True'  
-			#sys.exit()
 
 	elif new_list [7] == new_list [8] == new_list [9] :
 
@@ -172,7 +152,6 @@ def checkdata(new_list, letter):
 			drawBoard(new_list)
 			winner = new_list[7]
 			check_value = 'True'  
-			#sys.exit()
 
 	elif new_list [1] == new_list [4] == new_list [7] :
 
@@ -182,7 +161,6 @@ def checkdata(new_list, letter):
 			drawBoard(new_list)
 			winner = new_list[4]
 			check_value = 'True'  
-			#sys.exit()
 
 	elif new_list [2] == new_list [5] == new_list [8] :
 
@@ -192,7 +170,6 @@ def checkdata(new_list, letter):
 			drawBoard(new_list)
 			winner = new_list[5]
 			check_value = 'True'  
-			#sys.exit()
 
 	elif new_list [3] == new_list [6] == new_list [9] :
 
@@ -202,7 +179,6 @@ def checkdata(new_list, letter):
 			drawBoard(new_list)
 			winner = new_list[6]
 			check_value = 'True'  
-			#sys.exit()
 
 	elif new_list [1] == new_list [5] == new_list [9] :
 
@@ -212,7 +188,6 @@ def checkdata(new_list, letter):
 			drawBoard(new_list)
 			winner = new_list[5]
 			check_value = 'True'  
-			#sys.exit()
 
 	elif new_list [7] == new_list [5] == new_list [3] :
 
@@ -222,7 +197,6 @@ def checkdata(new_list, letter):
 			drawBoard(new_list)
 			winner = new_list[5]
 			check_value = 'True'  
-			#sys.exit()
 
 	myItem = ' '
 	if myItem not in new_list:
@@ -236,31 +210,32 @@ def checkdata(new_list, letter):
 	global user_score
 	if check_value == 'True'  :		
 
-		#print('Display Scores')
 		if winner == 'X':
-			#scorex = 1
+
 			sore_x += 1
 
 		elif winner == 'O':
-			#scoreo = 1 
+
 			sore_o += 1
+
 		elif winner == 'D':
 
 			sore_o += 0
 			sore_x += 0
-
-		
 		
 		if letter == winner:
+
 			print('Player wins this Round')
 			user_score += 1
+
 		elif letter != winner:
+
 			print('Computer wins this Round')
 			computer_score += 1
-		else:
-			print('Its a Tie, try again.')
 
-		
+		else:
+
+			print('Its a Tie, try again.')
 
 		print('\n')
 		print('------------------SCORE CARD------------------')
@@ -283,8 +258,6 @@ def checkdata(new_list, letter):
 
 		print('\n')
 		print('------------------ ~ END ~ ------------------')
-
-		#print('Score details '+str(sore_o)+' '+str(sore_x))
 		print('Would you like to play the game once again Y or N.')
 		user_choice = raw_input().upper()
 
@@ -296,22 +269,6 @@ def checkdata(new_list, letter):
 			sys.exit()
 
 
-		
-
-
 if __name__ == '__main__':
-	#drawBoard()
+
 	startgame()
-	#print(letter)
-	#drawBoard([' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '])
-	#initialplay()
-	#user_play()
-
-
-
-#create  a new function for printing the data using new list
-#should check if a box is already filled
-#if all the rows are filled
-#invalid input by the user
-#check wether the values are given correct in the list
-#Whatever as ---- should handle if strings are given
